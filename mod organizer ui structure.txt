@@ -1,0 +1,146 @@
+﻿Main Window
+-----------
+QMaiNWindow#MainWindow
+  QToolBar#toolBar
+  QGroupBox#categoriesGroup
+    QTreeWidget#categoriesList
+    QLabel#clickBlankLabel
+    QGroupBox#groupBox
+  QComboBox#profileBox
+  QPushButton#listOptionsBtn
+  QPushButton#restoreModsButton
+  QPushButton#saveModsButton
+  ModListView#modList (QTreeView)
+  QPushButton#displayCategoriesBtn
+  QComboBox#groupCombo
+  MOBase::LineEditClear#modFilterEdit (QLineEdit)
+  QComboBox#executablesListBox
+  QPushButton#startButton
+  QPushButton#linkButton
+  QTabWidget#tabWidget
+    QWidget#espTab
+      QPushButton#bossButton
+      QPushButton#restoreButton
+      QPushButton#saveButton
+      QTreeView#espList
+      MOBase::LineEditClear#espFilterEdit (QLineEdit)
+    QWidget#bsaTab
+      MOBase::SortableTreeWidget#bsaList (QTreeWidget)
+    QWidget#dataTab
+      QPushButton#btnRefreshData
+      QTreeWidget#dataTree
+    QWidget#savesTab
+      QListWidget#savegameList
+    QWidget#downloadTab
+      QTreeView#downloadView
+      QCheckBox#showHiddenBox
+      MOBase::LineEditClear#downloadFilterEdit (QLineEdit)
+  QTreeView#logList
+      
+
+Categories Dialog
+-----------------
+QDialog#CategoriesDialog
+  QTableWidget#categoriesTable
+  
+Download List Widget
+--------------------
+QWidget#DownloadListWidget
+  QFrame#frame
+    QProgressBar#downloadProgress
+  
+QWidget#DownloadListWidget
+  QProgressBar#downloadProgress
+  
+  
+Edit Modify Dialog
+-----------------------
+QDialog#EditExecutablesDialog
+  QListWidget#executablesListBox
+  
+Fomod Installer Dialog
+----------------------
+QDialog#CategoriesDialog
+  QLabel#nameEdit
+  QtextEdit#descriptionText
+  
+Installer Dialog
+----------------
+QDialog#InstallDialog
+~
+
+Mod Info Dialog
+---------------
+  QDialog#ModInfoDialog
+  Text Files
+  ----------
+  QWidget#tabText
+    QListWidget#textFileList
+    QTextEdit#textFileView
+    
+  INI-Files
+  ---------
+  QWidget#tabIni
+    QListWidget#iniFileList
+    QListWidget#iniTweaksList
+    QTextBrowser#iniFileView
+  
+  Images
+  ------
+  QWidget#tabImages
+    QScrollArea#scrollArea
+    
+  Optional ESPs
+  -------------
+  QWidget#tabESPs
+    QListWidget#activeESPList
+    QListWidget#inactiveESPList
+    QToolButton#activateESP
+    QToolButton#deactivateESP
+    
+  Conflicts
+  ---------
+  QWidget#tabConflicts
+    QLCDNumber#overwriteCount
+    QLCDNumber#overwrittenCount
+    QTreeWidget#overwriteTree
+    QTreeWidget#overwrittenTree
+    
+  Categories
+  ----------
+  QWidget#tabCategories
+    QTreeWidget#categoriesTree
+    
+  Nexus Info
+  ----------
+  QWidget#tabNexus
+    QLineEdit#modIDEdit
+    QLineEdit#versionEdit
+    QWebView#descriptionView
+    
+  Notes
+  -----
+  QWidget#tabNotes
+    QTextEdit#notesEdit
+  
+  File Tree
+  ---------
+  QWidget#tabFiles
+    QTreeView#fileTree
+
+
+Mod Exists Dialog
+-----------------
+QDialog#QueryOverwriteDialog
+  QPushButton#mergeBtn
+  QPushButton#replaceBtn
+  QPushButton#renameBtn
+  QPushButton#cancelBtn
+  
+
+Locked Dialog
+-------------  
+QDialog#LockedDialog
+  QPushButton#unlockButton
+  
+  

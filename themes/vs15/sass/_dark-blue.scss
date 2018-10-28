@@ -1,0 +1,28 @@
+/*base*/
+$color-selected-background: #3399FF;
+$color-hover-background: rgba($color-selected-background, 0.3);
+$color-hover-border: #007ACC;
+
+$color-selected-background-disabled: #202A34;
+
+$color-input-border-hover: #007ACC;
+$color-input-border-focus: #3399FF;
+
+/*$color-text-box-border-focus: #3399FF; = $color-input-border-focus*/
+/*$color-text-box-border-hover: #007ACC; = $color-input-border-hover*/
+
+$color-tool-button-pressed-background: #3399FF;
+
+/*$color-combo-box-hover-border: #007ACC;*/
+
+$color-button-hover-background: #007ACC;
+$color-button-pressed-background: #1C97EA;
+
+$color-dialog-button-background-hover: #BEE6FD;
+$color-dialog-button-border-hover: #3C7FB1;
+$color-dialog-button-border-focus: #3399FF;
+
+/*$color-check-box-hover-border: #007ACC; = $color-input-border-hover*/
+
+$color-tab-selected-background: #007ACC;
+$color-tab-hover-background: #1C97EA;

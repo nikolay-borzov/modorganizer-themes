@@ -1,0 +1,923 @@
+@charset "UTF-8";
+
+@import "version";
+
+@import "colors";
+
+$button-gap: .5em;
+
+QWidget {
+  background-color: $color-widget-background;
+  color: $color-widget-text;
+}
+
+/* Common */
+
+/* fix: fo some reason applying background-color or border fixes paddings properties */
+QListView::item,
+QTreeView#espList::item,
+QTreeWidget#categoriesList::item {
+  border-width: 0;
+}
+
+* { 
+  /* remove outline */
+  outline: 0;
+  /* text highlight  */
+  selection-background-color: $color-selection-background;
+  selection-color: $color-selection-text;
+}
+
+/* disabled text */
+
+*:disabled,
+QListView::item:disabled,
+*::item:selected:disabled {
+  color: $color-text-disabled;
+}
+
+/* line heights */
+QListView::item,
+QTreeWidget::item,
+QTreeView::item {
+  padding: .3em 0;
+}
+
+/*
+QTreeView#modList::item,
+QTreeWidget#categoriesTree::item,
+#tabConflicts QTreeWidget::item,
+QListView::item,
+QTreeView#espList::item,
+QTreeView#treeContent::item {
+  padding: .3em 0;
+}*/
+
+
+QAbstractItemView {
+  color: $color-text;
+  background-color: $color-item-background;
+  alternate-background-color: $color-item-background-alt;
+  border-color: $color-border;
+}
+
+QAbstractItemView,
+QListView,
+QTreeView {
+  show-decoration-selected: 1;
+}
+
+QAbstractItemView::item,
+QListView::item,
+QTreeView::branch,
+QTreeWidget::item { 
+  &:hover {
+    color: $color-hover-text;
+    background-color: $color-hover-background;
+  }
+  
+  &:disabled:hover {
+    background-color: red;
+  }
+  
+  &:selected:disabled {
+    background-color: $color-selected-background-disabled;
+  }
+}
+
+QAbstractItemView::item:selected {
+	background-color: $color-selected-background;
+  color: $color-hover-text;
+}
+
+/* Trees and Lists #QTreeView, #QListView*/
+
+QTreeView::branch {
+  &:selected {
+    background-color: $color-selected-background ;
+  }
+
+  &:closed:has-children {
+    image: url(./skyrim/arrow-right.png);
+  }
+  
+  &:open:has-children {
+    image: url(./skyrim/branch-opened.png);
+  }
+}
+
+/*QListView::item:hover { }
+QListView::item:selected { }*/
+
+QListView::item {
+  color: $color-text;
+}
+
+/* Text areas and text fields #QTextEdit, #QLineEdit, #QWebView */
+
+/* Common */
+QLabel {
+  background-color: transparent;
+
+  &#installLabel {
+    font-weight: bold;
+  }
+}
+
+/* Font size */
+QLabel,
+QTextEdit,
+QLineEdit,
+QWebView,
+QComboBox,
+QComboBox:editable,
+QAbstractSpinBox,
+QGroupBox,
+QCheckBox,
+QRadioButton {
+  font-size: 14px;
+}
+
+QTextEdit,
+QLineEdit,
+QWebView,
+QComboBox,
+QComboBox:editable,
+QAbstractSpinBox {
+  border: none;
+  background-color: $color-input-background;
+    
+  &:hover,
+  &:focus {
+    background-color: $color-input-background-hover;
+  }
+}
+
+QLineEdit,
+QAbstractSpinBox {
+  min-height: 24px;
+  padding: 2px;
+  
+  border: none;
+}
+
+QLineEdit {
+  margin-top: 0;
+  
+  /* clear button */
+  & QToolButton,
+  & QToolButton:hover {
+    background: none;
+    margin-top: 1px;
+  }
+  
+  &#espFilterEdit QToolButton {
+    margin-top: -2px;
+    margin-bottom: 1px;
+  }
+  
+  &#modFilterEdit {
+    margin-top: 2px;
+  }
+
+  /* increase version textfield width */
+  &#versionEdit {
+    max-width: 90px;
+  }
+  
+  /* fix margins on tabs pane */
+  &#espFilterEdit {
+    margin: 0 0 6px 0;
+  }
+  &#downloadView {
+    margin: 4px 4px 0 4px;
+  }
+  &#showHiddenBox {
+    margin: 0 0 4px 4px;
+  }
+  &#downloadFilterEdit {
+    margin: 0 4px 4px 0;
+  }
+}
+
+/* Dropdowns #QComboBox*/
+QComboBox { 
+  min-height: 20px;
+  padding-left: 5px;
+  margin: 3px 0 1px 0;
+  border-style: solid;
+  
+  &,
+  &:editable {
+    border-width: 5px;
+    border-color: transparent;
+    border-image: url(./skyrim/border-image1.png) 6 repeat repeat;
+  }
+  
+  &:on {
+    background-color: $color-input-background-hover;
+  }
+  
+  &:editable {
+    padding-left: 3px;
+  }
+  
+  &::drop-down {
+    width: 20px;
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    border: none;
+  }
+  
+  &::down-arrow {
+    image: url(./skyrim/arrow-down.png);
+  }
+  
+  & QAbstractItemView {
+    background-color: $color-combo-box-list-background;
+    selection-background-color: $color-input-background-hover;
+  }
+}
+
+/* Toolbar */
+QToolBar { 
+  border: none;
+  
+  &::separator {
+    image: url(./skyrim/separator.png);
+  }
+}
+
+QToolButton {
+  margin: 0 4px 0 4px;
+  padding: 5px;
+  /* need this to make background-color works*/
+  border: none;
+  
+  &:hover,
+  &:focus {
+    background-color: $color-hover-background;
+  }
+    
+  &:pressed {
+    background-color: $color-selected-background;
+  }
+  
+  &::menu-indicator {
+    image: url(./skyrim/arrow-down.png);   
+    margin: 0 4px 4px 0;
+        
+    &:pressed,
+    &:open {
+      image: url(./skyrim/arrow-right.png);
+    }
+  }
+  
+  /* scrollers */
+  QTabBar & {
+    background-color: #000;
+    
+    padding: 1px;
+    margin: 0;
+
+    &::right-arrow {
+      image: url(./skyrim/arrow-right.png);
+    }
+
+    &::left-arrow {
+      image: url(./skyrim/arrow-left.png);
+    }
+  }
+}
+
+/* Group Boxes #QGroupBox */
+QGroupBox {
+  padding: 1em .3em .3em .3em;
+  margin-top: .65em;
+  
+  border-width: 5px;
+  border-color: transparent;
+  border-image: url(./skyrim/border-image2.png) 5 repeat repeat;
+  
+  &::title { 
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 5px;
+    left: 10px
+  }
+}
+
+/* LCD Count */
+QLCDNumber {
+  border-color: $color-border;
+  
+  border-style: solid;
+  border-width: 1px;
+}
+
+/* Buttons #QPushButton */
+QPushButton {
+  min-height: 18px;
+  padding: 2px 5px;
+  
+  border-style: solid;
+
+  background-color: transparent;
+  border-width: 0 15px 0 15px;
+  border-color: transparent;
+  
+  &:hover,
+  &:checked:hover {
+    border-image: url(./skyrim/button-border.png) 0 15 repeat;
+  }
+  
+  &:checked {
+    border-image: url(./skyrim/button-checked-border.png) 0 15 repeat;
+  }
+  
+  &:disabled {
+    color: $color-text-disabled;
+  }
+  
+  /*&:focus { }*/
+  
+  &::menu-indicator {
+    image: url(./skyrim/arrow-down.png);
+    
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    padding-right: 5%;
+  }
+  
+  /* dialog buttons */
+  QDialog & {
+    font-weight: bold;
+    font-size: 15px;
+    min-width: 1.5em;
+    padding-left: .5em;
+    padding-right: .5em;
+  }
+  
+  /* show categories */
+  &#displayCategoriesBtn {
+    min-width: 20px;
+  }
+
+  /* run */
+  &#startButton {
+    &:hover {
+      border-image: url(./skyrim/button-big-border.png) 0 15 repeat;
+    }
+  
+    &:checked {
+      border-image: url(./skyrim/button-big-border.png) 0 15 repeat;
+    }
+  }
+  
+  /* unlock */
+  &#unlockButton {
+    margin: 10px 20px;
+  }
+
+  & + & {
+    margin: 10px 0 0 0;
+  }
+  
+  /* mod info dialog images tab */
+  QWidget#tabImages & {
+    background-color: transparent;
+    border: none;
+    margin: 0 .3em;
+    padding: 0;
+    
+    &:hover {
+      background-color: $color-hover-background;
+    }
+  }
+  
+  /* add some space between buttons */
+  QDialog#QueryOverwriteDialog & {
+    margin-left: $button-gap;
+  }
+
+  #ProfilesDialog & {
+    margin-bottom: $button-gap;
+  }
+
+  #ProfilesDialog &#closeButton {
+    margin-bottom: 0;
+  }
+
+  #EditExecutablesDialog &#addButton,
+  #EditExecutablesDialog &#removeButton {
+    margin-bottom: $button-gap;
+    margin-top: 2 * $button-gap;
+  }
+}
+
+/* Checkboxes and Radio buttons common #QCheckBox, #QRadioButton */
+/*common*/
+QGroupBox::indicator,
+QTreeView::indicator,
+QCheckBox::indicator {
+  background-color: transparent;
+  border: none;
+
+  width: 20px;
+  height: 20px;
+  
+  &:checked,
+  &:indeterminate  {
+    image: url(./skyrim/checkbox-checked.png);
+    
+    &:hover {
+      image: url(./skyrim/checkbox-checked-hover.png);
+    }
+    
+    &:disabled {
+      image: url(./skyrim/checkbox-checked-disabled.png);
+    }
+  }
+  
+  &:unchecked {
+    image: url(./skyrim/checkbox.png);
+    
+    &:hover {
+      image: url(./skyrim/checkbox-hover.png);
+    }
+    
+    &:disabled {
+      image: url(./skyrim/checkbox-disabled.png);
+    }
+  }
+}
+
+/* Checkboxes special */
+QTreeWidget#bsaList::indicator {
+  width: 10px;
+  height: 15px;
+  
+  &:checked {
+    image: url(./skyrim/checkbox-alt-checked.png);
+  }
+  
+  &:unchecked {
+    image: url(./skyrim/checkbox-alt-unchecked.png);
+    
+    &:hover {
+      image: url(./skyrim/checkbox-alt-unchecked-hover.png);
+    }
+  }
+}
+
+/* Radio buttons #QRadioButton */
+QRadioButton::indicator {
+  width: 16px;
+  height: 16px;
+  
+  &::checked {
+    image: url(./skyrim/radio-checked.png);
+  }
+  
+  &::unchecked {
+    image: url(./skyrim/radio.png);
+    
+    &:hover {
+      image: url(./skyrim/radio-hover.png);
+    }
+  }
+}
+
+/* Spinners #QSpinBox, #QDoubleSpinBox */
+QAbstractSpinBox {
+  margin: 1px;
+  
+  &::up-button,
+  &::down-button {
+    border-style: solid;
+    border-width: 1px;
+    subcontrol-origin: padding;
+    
+    &:hover {
+      background-color: $color-input-background;
+    }
+  }
+  
+  &::up-button {
+    subcontrol-position: top right;
+  }
+  
+  &::down-button {
+    subcontrol-position: bottom right;
+  }
+  
+  &::up-arrow {
+    image: url(./skyrim/arrow-up.png);
+  }
+  
+  &::down-arrow {
+    image: url(./skyrim/arrow-down.png);
+  }
+}
+
+
+/* Scroll Bars #QAbstractScrollArea, #QScrollBar*/
+/* assigning background still leaves not filled area*/
+QAbstractScrollArea::corner {
+  background-color: transparent;
+}
+
+$h-scrollbar-width: 17px; 
+$h-scrollbar-height: 12px; 
+$v-scrollbar-width: 12px; 
+$v-scrollbar-height: 17px; 
+
+QScrollBar {
+  background-color: transparent;
+  border: none;
+  
+  &:horizontal {
+    height: $h-scrollbar-height;
+    border: none;
+    margin: 0 $h-scrollbar-width 0 $h-scrollbar-width;
+  }
+
+  &:vertical {
+    width: $v-scrollbar-width;
+    border: none;
+    margin: $v-scrollbar-height 0 $v-scrollbar-height 0;
+  }
+  
+  &::handle {
+    border: 1px solid rgba(243, 243, 243, 0.88);
+    background-color: rgba(255, 255, 255, 0.6);
+    
+    &:horizontal {
+      min-width: 32px;
+      margin: 1px 0 1px 0;
+    }
+    
+    &:vertical {
+      min-height: 32px;
+      margin: 0 1px 0 1px;
+    }
+  }
+  
+  &::add-line,
+  &::sub-line {
+    background-color: transparent;
+    border: none;
+    subcontrol-origin: margin;
+    
+    &:horizontal {
+      width: $h-scrollbar-width;
+    }
+    
+    &:vertical {
+      height: $v-scrollbar-height;
+    }
+  }
+  
+  &::add-line { 
+    &:horizontal {
+      subcontrol-position: right;
+    }
+    
+    &:vertical {
+      subcontrol-position: bottom;
+    }
+  }
+
+  &::sub-line {
+    &:horizontal {
+      subcontrol-position: left;
+    }
+    
+    &:vertical {
+      subcontrol-position: top;
+    }
+  }
+
+  &::add-page,
+  &::sub-page {
+    &:horizontal {
+      background: url(./skyrim/scrollbar-horizontal.png) center center repeat-x;
+    }
+    
+    &:vertical {
+      background: url(./skyrim/scrollbar-vertical.png) center center repeat-y;
+    }
+  }
+
+  &::up-arrow:vertical {
+    image: url(./skyrim/scrollbar-up.png);
+  }
+  
+  &::down-arrow:vertical {
+    image: url(./skyrim/scrollbar-down.png);
+  }
+
+  &::right-arrow:horizontal {
+    image: url(./skyrim/scrollbar-right.png);
+  }
+
+  &::left-arrow:horizontal {
+    image: url(./skyrim/scrollbar-left.png);
+  }
+}
+
+/* Scroll Area #QScrollArea*/
+QScrollArea {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+}
+  
+/* Sliders #QSlider */
+QSlider {
+  &::groove:horizontal {
+    background: url(./skyrim/scrollbar-horizontal.png) repeat-x;
+    
+    border-style: solid;
+    border-width: 0 17px;
+    border-color: transparent;    
+
+    height: $h-scrollbar-height;
+    margin: 0;
+      
+    border-image: url(./skyrim/slider-border.png) 0 17 round
+  }
+   
+  &::handle:horizontal {
+    background: url(./skyrim/slider-handle.png);
+  
+    width: 18px;
+    height: 20px;
+    margin: -4px 0;
+    subcontrol-origin: margin;
+  }
+}
+  
+/* Header Rows and Tables (Configure Mod Categories) #QTableView, #QHeaderView */
+QTableView {
+	gridline-color: transparent /*$color-border*/;
+  selection-background-color: $color-selected-background;
+  selection-color: $color-text;
+  
+  & QTableCornerButton::section {
+    background-color: transparent;
+    border-color: $color-border;
+    
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+  }
+}
+
+QHeaderView {
+  border: none;
+  
+  &::section {
+    background-color: transparent;
+    border-color: $color-border;
+
+    /* 17px to have some place for sort indicator */
+    padding: 3px 17px 3px 5px;
+    border-style: solid;
+
+    &:horizontal {
+      border-width: 0 0 1px 0;
+    }
+    
+    &:vertical {
+      border-width: 0 1px 0 0;
+    }
+    
+    &:hover {
+      background: $color-hover-background;
+      color: $color-hover-text;
+    }
+  }
+  
+  &::up-arrow,
+  &::down-arrow {
+    subcontrol-origin: content;
+    subcontrol-position: center right;
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+  }
+  
+  &::up-arrow {
+    image: url(./skyrim/arrow-up.png);
+  }
+  
+  &::down-arrow {
+    image: url(./skyrim/arrow-down.png);
+  }
+}
+
+/* Context menus, toolbar dropdowns #QMenu  */
+QMenu {
+  background-color: transparent;
+  
+  border-width: 17px;
+  border-style: solid;
+  border-color: transparent;
+
+  border-image: url(./skyrim/border-image.png) 27 repeat repeat;
+  
+  &::item,
+  & QPushButton {
+    padding: 6px 20px;
+  }
+  
+  &::item {
+    &:selected {
+      background-color: $color-hover-background;
+    }
+    
+    &:disabled {
+      background-color: transparent;
+    }
+  }
+  
+  &::separator {
+    height: 3px;
+    margin: 1px 0;
+    background: url(./skyrim/context-menu-separator.png) repear-x;
+  }
+  
+  &::icon { 
+    margin: 1px;
+  }
+  
+  &::right-arrow {
+    image: url(./skyrim/arrow-right.png);
+    
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    padding-right: .5em;
+  }
+  
+  & QPushButton {
+    /* cancel styles */
+    border: none;
+    text-align: left;
+    
+    &:hover {
+      background-color: $color-hover-background;
+    }
+  }
+  
+  & QCheckBox,
+  & QRadioButton {
+    background-color: transparent;
+    padding: 5px 2px;
+  }
+}
+
+/* Tooltips #QToolTip, #SaveGameInfoWidget */
+
+QToolTip {
+	background-color: transparent;
+  color: $color-text;
+  padding: 0;
+    
+  border-width: 17px;
+  border-style: solid;
+  border-color: transparent;
+
+  border-image: url(./skyrim/border-image.png) 27 repeat repeat;
+}
+
+SaveGameInfoWidget {
+  background-color: $color-hover-background;
+  color: $color-text;
+}
+
+/* Progress Bars (Downloads) #QProgressBar */
+
+QProgressBar {  
+  background-color: transparent;
+  color: transparent;
+
+  height: 14px;
+  margin: 0 10px;
+  
+  border-width: 4px 21px;
+  border-style: solid;
+  border-color: transparent;
+
+  border-image: url(./skyrim/progress-bar-border.png) 4 21 repeat repeat;
+}
+
+QProgressBar::chunk {
+  /*
+  background: url(./skyrim/progress-bar-chunk.png) center center repear-x qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #95BED9, stop:0.124153 #6EB9CE, stop:0.78781 #474E86);
+  */
+  /*POSTSASS background: url(./skyrim/progress-bar-chunk.png) center center repear-x qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #95BED9, stop:0.78781 #6EB9CE); POSTSASS*/
+}
+
+/* Right Pane and Tab Bars #QTabWidget, #QTabBar */
+
+QTabWidget::pane {
+  border-color: $color-border;
+  
+  top: 0;
+  
+  border-width: 5px;
+  border-color: transparent;
+  border-image: url(./skyrim/border-image2.png) 5 repeat repeat;
+}
+
+QTabBar {
+  text-transform: uppercase;
+  max-height: 22px;
+  
+  &::tab {
+    color: $color-text;
+    
+    background-color: transparent;
+    padding: 4px .5em;
+    margin: 0 0 .3em 0;
+    
+    border-style: solid;
+    border-width: 0 15px 0 15px;
+    border-color: transparent;
+    
+    &:hover {
+      color: $color-hover-text;
+    }
+    
+    &:selected {
+      color: $color-hover-text;
+      border-image: url(./skyrim/button-checked-border.png) 0 15 repeat;
+    }
+    
+    &:disabled {
+      color: $color-text-disabled;
+    }
+  }
+  
+  &::scroller { 
+    width: 23px;
+  }
+}
+
+/* Border images */
+ModListView,
+QTreeView,
+ModListView#modList,
+QTreeWidget,
+QListView,
+QTableView,
+QDialog#LockedDialog {
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent;
+
+  border-image: url(./skyrim/border-image.png) 27 repeat repeat;
+}
+
+/* Special styles */
+/* increase categories tab width */
+QTreeWidget#categoriesList {
+  min-width: 200px;
+  
+  &::item {
+    background-position: center left;
+    background-repeat: no-repeat;
+    padding: .35em 10px;
+    
+    &:has-children {
+      background-image: url(./skyrim/arrow-right.png);
+      
+      &:open {
+        background-image: url(./skyrim/branch-opened.png);
+      }
+    }
+  } 
+}
+
+/* Dialogs width changes */
+
+/* increase width to prevent buttons cutting */
+QDialog#QueryOverwriteDialog {
+  min-width: 565px
+}
+
+QDialog#ModInfoDialog {
+  min-width: 940px
+}
+
+QDialog#BainComplexInstallerDialog {
+  min-width: 500px
+}
+
+QDialog#EditExecutablesDialog {
+  min-width: 500px
+}
+
+QDialog#SettingsDialog {
+  min-width: 670px
+}

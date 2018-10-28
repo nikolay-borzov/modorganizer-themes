@@ -1,0 +1,22 @@
+$color-text: #C0C0C0;
+$color-text-disabled: #656565;
+$color-border: #A6A8AB;
+
+$color-selection-background: #000;
+$color-selection-text: invert($color-selection-background);
+
+$color-selected-background: #5F5F5E;
+$color-hover-background: darken($color-selected-background, 30%);
+$color-selected-background-disabled: $color-hover-background;
+$color-hover-text: #fff;
+
+$color-input-background: #141414;
+$color-input-background-hover: lighten($color-input-background, 5%);
+
+$color-combo-box-list-background: #000;
+
+$color-widget-background: #000;
+$color-widget-text: #F1F1F1;
+
+$color-item-background: #000;
+$color-item-background-alt: #000;

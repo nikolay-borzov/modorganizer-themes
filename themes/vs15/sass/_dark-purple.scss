@@ -1,0 +1,27 @@
+/*base*/
+$color-theme-1: #7E2AD2 /*#3399FF*/;
+$color-theme-2: $color-theme-1/*#007ACC*/;
+$color-theme-3: lighten($color-theme-1, 5%)/*#1C97EA*/;
+$color-theme-4: lighten($color-theme-1, 3%)/*#3C7FB1*/;
+$color-theme-5: lighten($color-theme-1, 40%)/*#BEE6FD*/;
+
+$color-selected-background-disabled: darken($color-theme-1, 30%);
+
+$color-selected-background: $color-theme-1;
+$color-hover-background: rgba($color-selected-background, 0.3);
+$color-hover-border: $color-theme-2;
+
+$color-input-border-hover: $color-theme-2;
+$color-input-border-focus: $color-theme-1;
+
+$color-tool-button-pressed-background: $color-theme-1;
+
+$color-button-hover-background: $color-theme-2;
+$color-button-pressed-background: $color-theme-3;
+
+$color-dialog-button-background-hover: $color-theme-5;
+$color-dialog-button-border-hover: $color-theme-4;
+$color-dialog-button-border-focus: $color-theme-1;
+
+$color-tab-selected-background: $color-theme-2;
+$color-tab-hover-background: $color-theme-3;

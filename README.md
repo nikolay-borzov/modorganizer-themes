@@ -78,7 +78,7 @@ npm run watch -- --theme=vs15 --dest="C:\Games\Mod Organizer 2\stylesheets"
 # Other
 
 ## Resources
-* [Qt Documentation](http://doc.qt.io/qt-4.8/stylesheet-examples.html)
+* [Qt Documentation - The Style Sheet Syntax](http://doc.qt.io/qt-5/stylesheet-syntax.html)
 * [StackOverflow](http://stackoverflow.com/)
 * Mod Organizer source code
 

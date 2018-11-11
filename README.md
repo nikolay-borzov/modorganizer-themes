@@ -5,7 +5,7 @@ Get [latest versions](https://github.com/nikolay-borzov/modorganizer-themes/rele
 # General
 
 ## Installation
-Download and extract to `ModOrganizer\stylesheets\` folder
+Download and extract to `ModOrganizer 2\stylesheets\` folder
 
 ## Credits
 * Tannin for creating [Mod Organizer](http://www.nexusmods.com/skyrim/mods/1334/?)
@@ -57,7 +57,7 @@ Download and extract to `ModOrganizer\stylesheets\` folder
 
 ### Build
 ```
-npm run build -- --theme=vs15
+npm run build -- --theme=vs15 --version=2.1.0
 ```
 
 ### Watch

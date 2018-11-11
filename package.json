@@ -12,6 +12,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.1",
+    "gulp-zip": "^4.2.0",
     "minimist": "^1.2.0",
     "pump": "^3.0.0"
   },

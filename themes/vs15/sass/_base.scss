@@ -1,3 +1,8 @@
+@import "version";
+
+@import "../../common/fixes";
+@import "base-options";
+
 /* Main Window */
 
 QWidget {
@@ -12,12 +17,6 @@ QWidget {
 QMainWindow::separator { }
 
 /* Common */
-
-/* FIX: For some reason applying background-color or border fixes paddings 
-  properties. Otherwise padding is only applied when item is hovered */
-QListWidget::item {
-  border-width: 0;
-}
 
 /* remove outline */
 * { outline: 0; }
@@ -57,8 +56,8 @@ QTableView {
 
 QAbstractItemView {
   color: $color-item-text;
-	background-color: $color-item-background;
-	alternate-background-color: $color-item-background-alt;
+  background-color: $color-item-background;
+  alternate-background-color: $color-item-background-alt;
   border-color: $color-border;
   
   &::item:selected,
@@ -132,7 +131,7 @@ QAbstractSpinBox:hover,
 QTextEdit:hover,
 QComboBox:hover,
 QComboBox:editable:hover {
-	border-color: $color-input-border-hover;
+  border-color: $color-input-border-hover;
 }
 
 QLineEdit:focus,
@@ -240,25 +239,21 @@ QToolBar::separator {
 QToolButton {
   margin: 0 4px 0 4px;
   padding: 5px;
-  
+
   &:hover,
   &:focus {
     background-color: $color-tool-button-hover-background;
-    /* need this to make background-color works*/
-    border: none;
   }
   
   &:pressed {
     background-color: $color-tool-button-pressed-background;
-    /* need this to make background-color works*/
-    border: none;
   }
 }
 
 /* Group Boxes #QGroupBox */
 
 QGroupBox {
-	border-color: $color-border;
+  border-color: $color-border;
   
   border-style: solid;
   border-width: 1px;
@@ -298,14 +293,14 @@ QPushButton:checked,
 QPushButton:focus,
 QAbstractSpinBox::up-button:hover,
 QAbstractSpinBox::down-button:hover {
-	background-color: $color-button-hover-background;
+  background-color: $color-button-hover-background;
 }
 
 QPushButton:pressed,
 QPushButton:checked:hover,
 QAbstractSpinBox::up-button:pressed,
 QAbstractSpinBox::down-button:pressed {
-	background-color: $color-button-pressed-background;
+  background-color: $color-button-pressed-background;
 }
 
 QPushButton:disabled,
@@ -316,7 +311,7 @@ QAbstractSpinBox::down-button:disabled {
 }
 
 QPushButton::menu-indicator {
-	image: url(./vs15/combobox-down.png);
+  image: url(./vs15/combobox-down.png);
   
   subcontrol-origin: padding;
   subcontrol-position: center right;
@@ -478,7 +473,7 @@ QSlider::handle:horizontal {
 /* Scroll Bars #QAbstractScrollArea, #QScrollBar*/
 /* assigning background still leaves not filled area*/
 QAbstractScrollArea::corner {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 /* Horizontal */
@@ -501,9 +496,9 @@ QScrollBar::add-line:horizontal {
 }
 
 QScrollBar::sub-line:horizontal {
-	width: 23px;
-	subcontrol-position: left;
-	subcontrol-origin: margin;
+  width: 23px;
+  subcontrol-position: left;
+  subcontrol-origin: margin;
 }
 
 /* Vertical */
@@ -525,7 +520,7 @@ QScrollBar::add-line:vertical {
   subcontrol-origin: margin;
 }
 
-QScrollBar::sub-line:vertical {    
+QScrollBar::sub-line:vertical {
   height: 23px;
   subcontrol-position: top;
   subcontrol-origin: margin;
@@ -560,15 +555,15 @@ QScrollBar::add-line:vertical:pressed,
 QScrollBar::sub-line:vertical:pressed { }*/
 
 QScrollBar::handle:hover {
-	background: $color-handle-hover-background;
+  background: $color-handle-hover-background;
 }
 
 QScrollBar::handle:pressed {
-	background: $color-handle-pressed-background;
+  background: $color-handle-pressed-background;
 }
 
 QScrollBar::handle:disabled {
-	background: $color-handle-disabled-background;
+  background: $color-handle-disabled-background;
 }
 
 QScrollBar::add-page, 
@@ -628,7 +623,7 @@ QScrollArea {
 /* Header Rows and Tables (Configure Mod Categories) #QTableView, #QHeaderView */
 
 QTableView {
-	gridline-color: $color-border;
+  gridline-color: $color-border;
   selection-background-color: $color-selected-background;
   selection-color: $color-text;
 }
@@ -651,18 +646,18 @@ QHeaderView::section {
 
   padding: 3px 5px;
   border-style: solid;
-	border-width: 0 1px 1px 0;
+  border-width: 0 1px 1px 0;
 }
 
 QHeaderView::section:hover {
-	background: $color-table-header-background-hover;
-	color: $color-table-header-hover-text;
+  background: $color-table-header-background-hover;
+  color: $color-table-header-hover-text;
 }
 
 /*QHeaderView::section:first { }*/
 
 QHeaderView::section:last {
-	border-right: 0;
+  border-right: 0;
 }
 
 QHeaderView::up-arrow {
@@ -684,8 +679,8 @@ QHeaderView::down-arrow {
 /* Context menus, toolbar drop-downs #QMenu  */
 
 QMenu {
-	background-color: $color-context-menu-background;
-	border-color: $color-context-menu-border;
+  background-color: $color-context-menu-background;
+  border-color: $color-context-menu-border;
   
   border-style: solid;
   border-width: 1px;
@@ -693,13 +688,13 @@ QMenu {
 }
 
 QMenu::item {
-	background: transparent;
+  background: transparent;
   
   padding: 4px 20px;
 }
 
 QMenu::item:selected {
-	background-color: $color-context-menu-hover;
+  background-color: $color-context-menu-hover;
 }
 
 QMenu::item:disabled {
@@ -708,7 +703,7 @@ QMenu::item:disabled {
 
 QMenu::separator {   
   background-color: $color-context-menu-separator;
-  
+
   height: 1px;
   margin: 1px 0;
 }
@@ -739,17 +734,17 @@ QMenu QRadioButton {
   padding: 5px 2px;
 }
 
-/* Tooltips #QToolTip, #SaveGameInfoWidget */
+/* Tool tips #QToolTip, #SaveGameInfoWidget */
 
 QToolTip,
 SaveGameInfoWidget {
-	background-color: $color-tool-tip-background;
+  background-color: $color-tool-tip-background;
   border-color: $color-tool-tip-border;
   color: $color-text;
   
   border-style: solid;
   border-width: 1px;
-	padding: 2px;
+  padding: 2px;
 }
 
 /* Progress Bars (Downloads) #QProgressBar */
@@ -799,26 +794,26 @@ QTabBar::tab:hover {
 
 QTabBar::tab:selected,
 QTabBar::tab:selected:hover {
-	background-color: $color-tab-selected-background;
+  background-color: $color-tab-selected-background;
 }
 
 QTabBar::tab:disabled {
-	background-color: transparent;
+  background-color: transparent;
   color: $color-text-disabled;
 }
 
 QTabBar::tab:selected:disabled {
-	background-color: $color-tab-selected-disabled-background;
+  background-color: $color-tab-selected-disabled-background;
 }
 
 /* scrollers */
 
 QTabBar QToolButton {
-	background-color: $color-input-background;
+  background-color: $color-input-background;
   border-color: $color-input-border;
   
   padding: 1px;
-	margin: 0;
+  margin: 0;
   border-style: solid;
   border-width: 1px;
 }
@@ -831,7 +826,7 @@ QTabBar QToolButton:hover {
 
 QTabBar QToolButton:disabled,
 QTabBar QToolButton:pressed:hover {
-	background-color: $color-input-background;
+  background-color: $color-input-background;
 }
 
 /*QTabBar::tear { }*/

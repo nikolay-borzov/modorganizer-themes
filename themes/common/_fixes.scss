@@ -1,0 +1,16 @@
+/* For some reason applying background-color or border fixes paddings 
+   properties */
+QListWidget::item {
+  border-width: 0;
+}
+
+/* Don't override install label on download widget.
+   MO2 assigns color depending on download state */
+#installLabel {
+  color: none; 
+}
+
+/* Make `background-color` work for :hover, :focus and :pressed states */
+QToolButton {
+  border: none;
+}

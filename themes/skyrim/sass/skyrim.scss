@@ -1,57 +1,52 @@
 @charset "UTF-8";
 
 @import "version";
-
+@import "../../common/fixes";
 @import "colors";
-
-$button-gap: .5em;
+@import "variables";
 
 QWidget {
   background-color: $color-widget-background;
   color: $color-widget-text;
 }
 
-/* Common */
-
-/* FIX: For some reason applying background-color or border fixes paddings 
-   properties */
-QListWidget::item {
-  border-width: 0;
-}
-
 * { 
-  /* remove outline */
+  /* Remove outline */
   outline: 0;
-  /* text highlight  */
+  /* Text highlight  */
   selection-background-color: $color-selection-background;
   selection-color: $color-selection-text;
 }
 
-/* disabled text */
-
+/* Disabled text */
 *:disabled,
 QListView::item:disabled,
 *::item:selected:disabled {
   color: $color-text-disabled;
 }
 
-/* line heights */
+/* Line heights */
 QListView::item,
 QTreeWidget::item,
 QTreeView::item {
-  padding: .3em 0;
+  padding: $tree-item-padding;
 }
 
-/*
-QTreeView#modList::item,
-QTreeWidget#categoriesTree::item,
-#tabConflicts QTreeWidget::item,
-QListView::item,
-QTreeView#espList::item,
-QTreeView#treeContent::item {
-  padding: .3em 0;
-}*/
+/* Increase row height to fit inputs */
+#modList::item,
+#settingsTree::item,
+#pluginSettingsList::item,
+#espList::item {
+  min-height: $input-height + 10px;
+  padding: 0;
 
+  & QComboBox,
+  & QLineEdit,
+  & QComboBox:editable,
+  & QAbstractSpinBox {
+    margin: 2px;
+  }
+}
 
 QAbstractItemView {
   color: $color-text;
@@ -73,10 +68,6 @@ QTreeWidget::item {
   &:hover {
     color: $color-hover-text;
     background-color: $color-hover-background;
-  }
-  
-  &:disabled:hover {
-    background-color: red;
   }
   
   &:selected:disabled {
@@ -105,22 +96,14 @@ QTreeView::branch {
   }
 }
 
-/*QListView::item:hover { }
-QListView::item:selected { }*/
-
 QListView::item {
   color: $color-text;
 }
 
 /* Text areas and text fields #QTextEdit, #QLineEdit, #QWebView */
 
-/* Common */
 QLabel {
   background-color: transparent;
-
-  &#installLabel {
-    font-weight: bold;
-  }
 }
 
 /* Font size */
@@ -134,8 +117,10 @@ QAbstractSpinBox,
 QGroupBox,
 QCheckBox,
 QRadioButton {
-  font-size: 14px;
+  font-size: $font-size;
 }
+
+/* Inputs */
 
 QTextEdit,
 QLineEdit,
@@ -143,8 +128,10 @@ QWebView,
 QComboBox,
 QComboBox:editable,
 QAbstractSpinBox {
+  min-height: $input-height;
   border: none;
   background-color: $color-input-background;
+  padding: $input-padding;
     
   &:hover,
   &:focus {
@@ -152,18 +139,10 @@ QAbstractSpinBox {
   }
 }
 
-QLineEdit,
-QAbstractSpinBox {
-  min-height: 24px;
-  padding: 2px;
-  
-  border: none;
-}
-
 QLineEdit {
   margin-top: 0;
   
-  /* clear button */
+  /* Clear button */
   & QToolButton,
   & QToolButton:hover {
     background: none;
@@ -179,12 +158,12 @@ QLineEdit {
     margin-top: 2px;
   }
 
-  /* increase version textfield width */
+  /* Increase version text field width */
   &#versionEdit {
     max-width: 90px;
   }
   
-  /* fix margins on tabs pane */
+  /* Fix margins on tabs pane */
   &#espFilterEdit {
     margin: 0 0 6px 0;
   }
@@ -201,17 +180,8 @@ QLineEdit {
 
 /* Drop-downs #QComboBox*/
 QComboBox { 
-  min-height: 20px;
   padding-left: 5px;
   margin: 3px 0 1px 0;
-  border-style: solid;
-  
-  &,
-  &:editable {
-    border-width: 5px;
-    border-color: transparent;
-    border-image: url(./skyrim/border-image1.png) 6 repeat repeat;
-  }
   
   &:on {
     background-color: $color-input-background-hover;
@@ -250,8 +220,6 @@ QToolBar {
 QToolButton {
   margin: 0 4px 0 4px;
   padding: 5px;
-  /* need this to make background-color works*/
-  border: none;
   
   &:hover,
   &:focus {
@@ -272,7 +240,7 @@ QToolButton {
     }
   }
   
-  /* scrollers */
+  /* Scrollers */
   QTabBar & {
     background-color: #000;
     
@@ -293,10 +261,7 @@ QToolButton {
 QGroupBox {
   padding: 1em .3em .3em .3em;
   margin-top: .65em;
-  
-  border-width: 5px;
-  border-color: transparent;
-  border-image: url(./skyrim/border-image2.png) 5 repeat repeat;
+  border: 1px solid $color-border;
   
   &::title { 
     subcontrol-origin: margin;
@@ -327,7 +292,7 @@ QPushButton {
   
   &:hover,
   &:checked:hover {
-    border-image: url(./skyrim/button-border.png) 0 15 repeat;
+    border-image: url(./skyrim/button-border.png) 0 15 no-repeat;
   }
   
   &:checked {
@@ -337,9 +302,7 @@ QPushButton {
   &:disabled {
     color: $color-text-disabled;
   }
-  
-  /*&:focus { }*/
-  
+
   &::menu-indicator {
     image: url(./skyrim/arrow-down.png);
     
@@ -348,7 +311,8 @@ QPushButton {
     padding-right: 5%;
   }
   
-  /* dialog buttons */
+  /* Dialog buttons */
+
   QDialog & {
     font-weight: bold;
     font-size: 15px;
@@ -357,12 +321,12 @@ QPushButton {
     padding-right: .5em;
   }
   
-  /* show categories */
+  /* Show categories */
   &#displayCategoriesBtn {
     min-width: 20px;
   }
 
-  /* run */
+  /* Run */
   &#startButton {
     &:hover {
       border-image: url(./skyrim/button-big-border.png) 0 15 repeat;
@@ -373,7 +337,6 @@ QPushButton {
     }
   }
   
-  /* unlock */
   &#unlockButton {
     margin: 10px 20px;
   }
@@ -382,8 +345,8 @@ QPushButton {
     margin: 10px 0 0 0;
   }
   
-  /* mod info dialog images tab */
-  QWidget#tabImages & {
+  /* Mod info dialog images tab */
+  #tabImages & {
     background-color: transparent;
     border: none;
     margin: 0 .3em;
@@ -393,29 +356,15 @@ QPushButton {
       background-color: $color-hover-background;
     }
   }
-  
-  /* add some space between buttons */
-  QDialog#QueryOverwriteDialog & {
-    margin-left: $button-gap;
-  }
 
-  #ProfilesDialog & {
-    margin-bottom: $button-gap;
-  }
-
-  #ProfilesDialog &#closeButton {
-    margin-bottom: 0;
-  }
-
-  #EditExecutablesDialog &#addButton,
-  #EditExecutablesDialog &#removeButton {
-    margin-bottom: $button-gap;
-    margin-top: 2 * $button-gap;
+  // Remove decoration on boolean buttons inside Configurator tree
+  #settingsTree::item & {
+    border-image: none;
   }
 }
 
-/* Checkboxes and Radio buttons common #QCheckBox, #QRadioButton */
-/*common*/
+/* Check boxes and Radio buttons common #QCheckBox, #QRadioButton */
+
 QGroupBox::indicator,
 QTreeView::indicator,
 QCheckBox::indicator {
@@ -451,7 +400,8 @@ QCheckBox::indicator {
   }
 }
 
-/* Checkboxes special */
+/* Check boxes special */
+
 QTreeWidget#bsaList::indicator {
   width: 10px;
   height: 15px;
@@ -470,6 +420,7 @@ QTreeWidget#bsaList::indicator {
 }
 
 /* Radio buttons #QRadioButton */
+
 QRadioButton::indicator {
   width: 16px;
   height: 16px;
@@ -488,6 +439,7 @@ QRadioButton::indicator {
 }
 
 /* Spinners #QSpinBox, #QDoubleSpinBox */
+
 QAbstractSpinBox {
   margin: 1px;
   
@@ -519,9 +471,9 @@ QAbstractSpinBox {
   }
 }
 
-
 /* Scroll Bars #QAbstractScrollArea, #QScrollBar*/
-/* assigning background still leaves not filled area*/
+
+/* Assigning background still leaves not filled area */
 QAbstractScrollArea::corner {
   background-color: transparent;
 }
@@ -623,9 +575,18 @@ QScrollBar {
   &::left-arrow:horizontal {
     image: url(./skyrim/scrollbar-left.png);
   }
+
+  /* Since QTextEdit:hover doesn't work set focus input background */
+  QTextEdit &::up-arrow:vertical,
+  QTextEdit &::down-arrow:vertical,
+  QTextEdit &::right-arrow:horizontal,
+  QTextEdit &::left-arrow:horizontal {
+    background-color: $color-input-background-hover;
+  }
 }
 
 /* Scroll Area #QScrollArea*/
+
 QScrollArea {
   border-color: transparent;
   border-style: solid;
@@ -633,13 +594,14 @@ QScrollArea {
 }
   
 /* Sliders #QSlider */
+
 QSlider {
   &::groove:horizontal {
     background: url(./skyrim/scrollbar-horizontal.png) repeat-x;
     
     border-style: solid;
     border-width: 0 17px;
-    border-color: transparent;    
+    border-color: transparent;
 
     height: $h-scrollbar-height;
     margin: 0;
@@ -658,8 +620,9 @@ QSlider {
 }
   
 /* Header Rows and Tables (Configure Mod Categories) #QTableView, #QHeaderView */
+
 QTableView {
-	gridline-color: transparent /*$color-border*/;
+	gridline-color: transparent;
   selection-background-color: $color-selected-background;
   selection-color: $color-text;
   
@@ -715,15 +678,10 @@ QHeaderView {
   }
 }
 
-/* Context menus, toolbar dropdowns #QMenu  */
+/* Context menus, toolbar drop-downs #QMenu  */
+
 QMenu {
   background-color: transparent;
-  
-  border-width: 17px;
-  border-style: solid;
-  border-color: transparent;
-
-  border-image: url(./skyrim/border-image.png) 27 repeat repeat;
   
   &::item,
   & QPushButton {
@@ -759,7 +717,7 @@ QMenu {
   }
   
   & QPushButton {
-    /* cancel styles */
+    /* Cancel styles */
     border: none;
     text-align: left;
     
@@ -775,18 +733,12 @@ QMenu {
   }
 }
 
-/* Tooltips #QToolTip, #SaveGameInfoWidget */
+/* Tool tips #QToolTip, #SaveGameInfoWidget */
 
 QToolTip {
-	background-color: transparent;
+  background-color: transparent;
   color: $color-text;
   padding: 0;
-    
-  border-width: 17px;
-  border-style: solid;
-  border-color: transparent;
-
-  border-image: url(./skyrim/border-image.png) 27 repeat repeat;
 }
 
 SaveGameInfoWidget {
@@ -808,25 +760,17 @@ QProgressBar {
   border-color: transparent;
 
   border-image: url(./skyrim/progress-bar-border.png) 4 21 repeat repeat;
-}
 
-QProgressBar::chunk {
-  /*
-  background: url(./skyrim/progress-bar-chunk.png) center center repear-x qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #95BED9, stop:0.124153 #6EB9CE, stop:0.78781 #474E86);
-  */
-  /*POSTSASS background: url(./skyrim/progress-bar-chunk.png) center center repear-x qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #95BED9, stop:0.78781 #6EB9CE); POSTSASS*/
+  &::chunk {
+    /*POSTSASS background: url(./skyrim/progress-bar-chunk.png) center center repeat-x qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #95BED9, stop:0.78781 #6EB9CE); POSTSASS*/
+  }
 }
 
 /* Right Pane and Tab Bars #QTabWidget, #QTabBar */
 
 QTabWidget::pane {
-  border-color: $color-border;
-  
+  border: none;
   top: 0;
-  
-  border-width: 5px;
-  border-color: transparent;
-  border-image: url(./skyrim/border-image2.png) 5 repeat repeat;
 }
 
 QTabBar {
@@ -864,6 +808,7 @@ QTabBar {
 }
 
 /* Border images */
+
 ModListView,
 QTreeView,
 ModListView#modList,
@@ -872,14 +817,22 @@ QListView,
 QTableView,
 QDialog#LockedDialog {
   border-width: 20px;
-  border-style: solid;
+  border-color: transparent;
+
+  border-image: url(./skyrim/border-image.png) 27 repeat repeat;
+}
+
+QMenu,
+QToolTip {
+  border-width: 17px;
   border-color: transparent;
 
   border-image: url(./skyrim/border-image.png) 27 repeat repeat;
 }
 
 /* Special styles */
-/* increase categories tab width */
+
+/* Increase categories tab width */
 QTreeWidget#categoriesList {
   min-width: 200px;
   
@@ -898,25 +851,59 @@ QTreeWidget#categoriesList {
   } 
 }
 
-/* Dialogs width changes */
+/* Add some space around buttons */
+QPushButton {
+  #QueryOverwriteDialog & {
+    margin-left: $button-gap;
+  }
 
-/* increase width to prevent buttons cutting */
-QDialog#QueryOverwriteDialog {
-  min-width: 565px
+  #SimpleInstallDialog & {
+    margin-top: $button-gap;
+  }
+
+  #ProfilesDialog & {
+    margin-bottom: $button-gap;
+  }
+
+  #ProfilesDialog &#closeButton {
+    margin-bottom: 0;
+  }
+
+  #EditExecutablesDialog &#addButton,
+  #EditExecutablesDialog &#removeButton {
+    margin-bottom: $button-gap;
+    margin-top: 2 * $button-gap;
+  }
 }
 
-QDialog#ModInfoDialog {
-  min-width: 940px
+/* Increase dialogs width to prevent buttons cutting */
+QDialog {
+  &#QueryOverwriteDialog {
+    min-width: 565px
+  }
+  
+  &#ModInfoDialog {
+    min-width: 940px
+  }
+  
+  &#BainComplexInstallerDialog {
+    min-width: 500px
+  }
+  
+  &#EditExecutablesDialog {
+    min-width: 500px
+  }
+  
+  &#SettingsDialog {
+    min-width: 670px
+  }
+  
+  &#CredentialsDialog {
+    min-width: 400px
+  }
 }
 
-QDialog#BainComplexInstallerDialog {
-  min-width: 500px
-}
-
-QDialog#EditExecutablesDialog {
-  min-width: 500px
-}
-
-QDialog#SettingsDialog {
-  min-width: 670px
+// Increase plugins list widget width to remove horizontal scrollbar
+#pluginsList {
+  min-width: 260px;
 }

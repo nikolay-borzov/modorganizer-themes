@@ -114,7 +114,6 @@ QListView::item {
 
 /* Text areas and text fields #QTextEdit, #QLineEdit, #QWebView */
 
-/* Common */
 QTextEdit,
 QWebView,
 QLineEdit,
@@ -318,9 +317,8 @@ QPushButton::menu-indicator {
   padding-right: 5%;
 }
 
-/* dialog buttons */
+/* Dialog buttons */
 
-/* Common */
 QDialog QPushButton,
 QSlider::handle:horizontal,
 QSlider::handle:vertical {
@@ -363,7 +361,6 @@ QDialog QPushButton {
 }
 
 /* Check boxes and Radio buttons common #QCheckBox, #QRadioButton */
-/* common */
 QGroupBox::indicator,
 QTreeView::indicator,
 QCheckBox::indicator,
@@ -806,7 +803,7 @@ QTabBar::tab:selected:disabled {
   background-color: $color-tab-selected-disabled-background;
 }
 
-/* scrollers */
+/* Scrollers */
 
 QTabBar QToolButton {
   background-color: $color-input-background;

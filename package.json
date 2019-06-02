@@ -8,11 +8,11 @@
   "repository": "https://github.com/nikolay-borzov/modorganizer-themes.git",
   "devDependencies": {
     "del": "^4.1.1",
-    "gulp": "^4.0.1",
+    "gulp": "^4.0.2",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.2",
-    "gulp-zip": "^4.2.0",
+    "gulp-zip": "^5.0.0",
     "minimist": "^1.2.0",
     "pump": "^3.0.0"
   },

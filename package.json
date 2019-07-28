@@ -7,7 +7,7 @@
   "description": "Modorganizer 2 themes",
   "repository": "https://github.com/nikolay-borzov/modorganizer-themes.git",
   "devDependencies": {
-    "del": "^4.1.1",
+    "del": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",

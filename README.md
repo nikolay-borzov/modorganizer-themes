@@ -4,6 +4,8 @@ Get [latest versions](https://github.com/nikolay-borzov/modorganizer-themes/rele
 
 # General
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nikolay-borzov/modorganizer-themes.svg)](https://greenkeeper.io/)
+
 ## Installation
 Download and extract to `ModOrganizer 2\stylesheets\` folder
 

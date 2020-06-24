@@ -1,5 +1,5 @@
-@charset "UTF-8";
+@use 'sass:meta';
 
-@import "dark-base";
-@import "dark-blue";
-@import "base";
+@use 'theme-dark';
+
+@include meta.load-css('base', $with: meta.module-variables('theme-dark'));

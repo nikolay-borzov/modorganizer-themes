@@ -1,0 +1,7 @@
+@use "sass:color";
+// Compares contrast of a given color to the light/dark arguments and returns whichever is most "contrasty". Source https://codepen.io/bluesaunders/details/FCLaz, https://codepen.io/Niklan/pen/ZpAdNx
+@function color-contrast($color, $dark: $dark-text-default, $light: $light-text-default) {
+  $yiq: (color.red($color) * 299 + color.green($color) * 587 + color.blue($color) * 114) / 1000;
+
+  @return if($yiq >= 128, $dark, $light);
+}

@@ -1,6 +1,7 @@
 ﻿const gulp = require('gulp')
 const pump = require('pump')
 const sass = require('gulp-sass')
+const Fiber = require('fibers')
 const replace = require('gulp-replace')
 const rename = require('gulp-rename')
 const del = require('del')
@@ -10,7 +11,7 @@ const {
   _: [, , task],
   theme,
   dest,
-  version
+  version,
 } = require('minimist')(process.argv)
 
 if (!theme) {
@@ -21,6 +22,8 @@ if (task === 'build' && !version) {
   throw new Error(`'version' parameter is required`)
 }
 
+sass.compiler = require('sass')
+
 const sassGlob = `themes/${theme}/sass/**/*.scss`
 const imagesGlob = `themes/${theme}/images/*.png`
 const destPath = dest || `./dist/`
@@ -29,7 +32,7 @@ const destGlobs = [`${destPath}/${theme}*`, `${imagesDest}**`]
 
 function clean() {
   return del(destGlobs, {
-    force: true
+    force: true,
   })
 }
 
@@ -41,12 +44,12 @@ function buildCss(done) {
   pump(
     [
       gulp.src(sassGlob),
-      sass().on('error', sass.logError),
+      sass({ fiber: Fiber }).on('error', sass.logError),
       replace('/*POSTSASS ', ''),
       replace(' POSTSASS*/', ''),
       replace('VERSION', version),
       rename({ extname: '.qss' }),
-      gulp.dest(destPath)
+      gulp.dest(destPath),
     ],
     done
   )
@@ -57,7 +60,7 @@ function zipTheme(done) {
     [
       gulp.src(destGlobs, { base: destPath }),
       zip(`${theme}-${version}.zip`),
-      gulp.dest(destPath)
+      gulp.dest(destPath),
     ],
     done
   )
@@ -68,7 +71,7 @@ function watchSass() {
 }
 
 function watchImages() {
-  return gulp.watch(imagesGlob, copyImages)
+  return gulp.watch(imagesGlob, { ignoreInitial: false }, copyImages)
 }
 
 exports.build = gulp.series(

@@ -1,5 +1,17 @@
-@charset "UTF-8";
+@use 'sass:meta';
+@use 'sass:map';
 
-@import "dark-base";
-@import "dark-red";
-@import "base";
+@use 'theme-dark';
+
+$color-accent: #990000;
+
+@include meta.load-css(
+  'base',
+  $with:
+    map.merge(
+      meta.module-variables('theme-dark'),
+      (
+        'color-accent': $color-accent,
+      )
+    )
+);

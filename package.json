@@ -1,20 +1,23 @@
 {
-  "name": "root",
+  "name": "modorganizer-themes",
   "private": true,
   "version": "1.0.0",
   "author": "nikolay-borzov <nikolay.n.borzov@gmail.com>",
   "license": "GPL-3.0",
-  "description": "Modorganizer 2 themes",
+  "description": "Modorganizer 1/2 themes",
   "repository": "https://github.com/nikolay-borzov/modorganizer-themes.git",
   "devDependencies": {
     "del": "^5.1.0",
+    "fibers": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-zip": "^5.0.1",
     "minimist": "^1.2.5",
-    "pump": "^3.0.0"
+    "prettier": "^2.0.5",
+    "pump": "^3.0.0",
+    "sass": "^1.26.9"
   },
   "scripts": {
     "watch": "gulp watch",

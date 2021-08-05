@@ -1,7 +1,6 @@
 ﻿const gulp = require('gulp')
 const pump = require('pump')
-const sass = require('gulp-sass')
-const Fiber = require('fibers')
+const sass = require('gulp-sass')(require('sass'))
 const replace = require('gulp-replace')
 const rename = require('gulp-rename')
 const del = require('del')
@@ -21,8 +20,6 @@ if (!theme) {
 if (task === 'build' && !version) {
   throw new Error(`'version' parameter is required`)
 }
-
-sass.compiler = require('sass')
 
 const sassGlob = `themes/${theme}/sass/**/*.scss`
 const imagesGlob = `themes/${theme}/images/*.png`
@@ -44,7 +41,7 @@ function buildCss(done) {
   pump(
     [
       gulp.src(sassGlob),
-      sass({ fiber: Fiber }).on('error', sass.logError),
+      sass().on('error', sass.logError),
       replace('/*POSTSASS ', ''),
       replace(' POSTSASS*/', ''),
       replace('VERSION', version),

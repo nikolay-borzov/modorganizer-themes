@@ -1,17 +1,19 @@
-﻿const gulp = require('gulp')
-const pump = require('pump')
-const sass = require('gulp-sass')(require('sass'))
-const replace = require('gulp-replace')
-const rename = require('gulp-rename')
-const del = require('del')
-const zip = require('gulp-zip')
+﻿import gulp from 'gulp'
+import pump from 'pump'
+import gulpSass from 'gulp-sass'
+import dartSass from 'sass'
+import replace from 'gulp-replace'
+import rename from 'gulp-rename'
+import del from 'del'
+import zip from 'gulp-zip'
+import minimist from 'minimist'
 
 const {
   _: [, , task],
   theme,
   dest,
   version,
-} = require('minimist')(process.argv)
+} = minimist(process.argv)
 
 if (!theme) {
   throw new Error(`'theme' parameter is required`)
@@ -20,6 +22,8 @@ if (!theme) {
 if (task === 'build' && !version) {
   throw new Error(`'version' parameter is required`)
 }
+
+const sass = gulpSass(dartSass);
 
 const sassGlob = `themes/${theme}/sass/**/*.scss`
 const imagesGlob = `themes/${theme}/images/*.png`
@@ -41,7 +45,7 @@ function buildCss(done) {
   pump(
     [
       gulp.src(sassGlob),
-      sass().on('error', sass.logError),
+      sass.sync().on('error', sass.logError),
       replace('/*POSTSASS ', ''),
       replace(' POSTSASS*/', ''),
       replace('VERSION', version),
@@ -71,10 +75,10 @@ function watchImages() {
   return gulp.watch(imagesGlob, { ignoreInitial: false }, copyImages)
 }
 
-exports.build = gulp.series(
+export const build = gulp.series(
   clean,
   gulp.parallel(buildCss, copyImages),
   zipTheme
 )
 
-exports.watch = gulp.parallel(watchSass, watchImages)
+export const watch = gulp.parallel(watchSass, watchImages)

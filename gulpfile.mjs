@@ -4,7 +4,7 @@ import gulpSass from 'gulp-sass'
 import dartSass from 'sass'
 import replace from 'gulp-replace'
 import rename from 'gulp-rename'
-import del from 'del'
+import { deleteAsync } from 'del'
 import zip from 'gulp-zip'
 import minimist from 'minimist'
 
@@ -32,7 +32,7 @@ const imagesDest = `${destPath}/${theme}/`
 const destGlobs = [`${destPath}/${theme}*`, `${imagesDest}**`]
 
 function clean() {
-  return del(destGlobs, {
+  return deleteAsync(destGlobs, {
     force: true,
   })
 }

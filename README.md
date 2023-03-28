@@ -13,7 +13,7 @@ Download and extract to `ModOrganizer 2\stylesheets\` folder
 - Tannin for creating [Mod Organizer](http://www.nexusmods.com/skyrim/mods/1334/?)
 - [Mod Organizer 2](https://github.com/ModOrganizer2/modorganizer) team
 
-# Skyrim
+# [Skyrim](https://www.nexusmods.com/skyrim/mods/73817)
 
 Skyrim UI theme
 
@@ -31,15 +31,15 @@ Skyrim UI theme
 
 - Bethesda Softworks for a great game
 
-# VS15
+# [VS15](https://www.nexusmods.com/skyrim/mods/73273)
 
 Dark theme inspired by VS 2015 UI.
 
 ## Features
 
-- Minimalist
+- Minimalistic
 - Increased list items height (Mods  List, Plugins List and etc.)
-- Unchecked .bsa highlight on Archives tab
+- Unchecked .bsa is highlighted on Archives tab
 - Unique sort indicator
 - Several fixes
 
